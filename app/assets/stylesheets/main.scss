@@ -44,7 +44,8 @@ body {
 }
 
 .navbar-default {
-  background-color: $brand-primary ;
+
+  background-color: $brand-primary;
 }
 
 .overflow-visible {
@@ -148,6 +149,7 @@ footer small {
     
     border-color: #771936;
     font: "Helvetica";
+
   }
 
   .btn-default {
@@ -155,6 +157,7 @@ footer small {
     background-color: $brand-primary;
     border-color: $brand-secondary;
     font: "Helvetica";
+
   }
 }
 
