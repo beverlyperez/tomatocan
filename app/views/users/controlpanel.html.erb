@@ -4,13 +4,12 @@
   <% if current_user.id == @user.id %>
   <div class="navbar-collapse" id="navbarNav" style="padding-top: 50px">
     <ul class=" nav navbar-nav nav-pills nav-justified  container-fluid" id="controlPanelNav">
-    <li style="padding: 10px;" role="presentation" class="active px-5 font-weight-bold ml-5"><%= link_to  "Profile", "#profileTab", "data-toggle" => "tab", class: "row profile-settings-tab" %></li>
-    <li style="padding: 10px;" role="presentation" class="px-5 font-weight-bold "><%= link_to "Conversations", "#streamingTab", "data-toggle" => "tab", class: "events-tab" %></li>
-    <li style="padding: 10px;" role="presentation" class="px-5 font-weight-bold "><%= link_to "Rewards", "#rewardsTab", "data-toggle" => "tab" %></li>
-    <li style="padding: 10px;" role="presentation" class="px-5 font-weight-bold "><%= link_to "Sales", "#salesTab", "data-toggle" => "tab" %></li>
-
-    <li style="padding: 10px;" role="presentation" class="px-5 font-weight-bold"><%= link_to "Account", "#accountTab", "data-toggle" => "tab", class: "account-settings-tab" %></li>
-    <li style="padding: 10px;" role="presentation" class="px-5 font-weight-bold"><%= link_to "Blocked Users", "#blockedTab", "data-toggle" => "tab" %></li>
+		<li id="prof" onClick="changeColor('#prof')" style="padding: 10px;" role="presentation" class="active px-5 font-weight-bold ml-3"><%= link_to  "Profile", "#profileTab", "data-toggle" => "tab", class: "row profile-settings-tab" %></li>
+		<li id="convo" onClick="changeColor('#convo')" style="padding: 10px;" role="presentation" class="px-5 font-weight-bold "><%= link_to "Conversations", "#streamingTab", "data-toggle" => "tab", class: "events-tab" %></li>
+		<li id="rew" onClick="changeColor('#rew')" style="padding: 10px;" role="presentation" class="px-5 font-weight-bold "><%= link_to "Rewards", "#rewardsTab", "data-toggle" => "tab" %></li>
+		<li id="sal" onClick="changeColor('#sal')" style="padding: 10px;" role="presentation" class="px-5 font-weight-bold "><%= link_to "Sales", "#salesTab", "data-toggle" => "tab" %></li>
+		<li id="acc" onClick="changeColor('#acc')" style="padding: 10px;" role="presentation" class="px-5 font-weight-bold"><%= link_to "Account", "#accountTab", "data-toggle" => "tab", class: "account-settings-tab" %></li>
+		<li id="bloccU" onClick="changeColor('#bloccU')" style="padding: 10px;" role="presentation" class="px-5 font-weight-bold"><%= link_to "Blocked Users", "#blockedTab", "data-toggle" => "tab" %></li>
     </ul>
   </div>
   
@@ -162,11 +161,22 @@
     -->
     
     <script>
-      function unblock(current_user_id, to_unblock_id) {
-        $.post("/users/unblock", {current_user_id: current_user_id, to_unblock_id: to_unblock_id}, function() {
-          $('#blocked').load(document.URL +  ' #blocked');
-        })
-      }
+		
+		function changeColor(idName){
+			if($("li").hasClass("active")){
+					$("li").removeClass("active");
+				}
+			if($(idName).hasClass("px-5 font-weight-bold")){
+				$(idName).addClass("active");
+				
+			}		
+			
+		}
+		function unblock(current_user_id, to_unblock_id) {
+			$.post("/users/unblock", {current_user_id: current_user_id, to_unblock_id: to_unblock_id}, function() {
+				$('#blocked').load(document.URL +  ' #blocked');
+			})
+		}
     </script>
   <% end %>
 <% end %>

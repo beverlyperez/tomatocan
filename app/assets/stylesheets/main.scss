@@ -451,6 +451,11 @@ td {
 	
 }
 
+#controlPanelNav li.active a{
+	color: $brand-secondary;
+}
+
+
 //MAIN.SCSS: General settings to import bootstrap and change some more default settings
 
 //Overrides Bootstrap-defined variables
