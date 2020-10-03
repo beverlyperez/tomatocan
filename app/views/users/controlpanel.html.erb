@@ -3,7 +3,7 @@
 <% if user_signed_in? %>
   <% if current_user.id == @user.id %>
   <div class="navbar-collapse" id="navbarNav" style="padding-top: 50px">
-    <ul class=" nav navbar-nav nav-pills nav-justified  container-fluid" id="controlPanelNav">
+    <ul class=" nav navbar-nav nav-pills nav-justified  container-fluid" id="controlPanelNav" onLoad="firstAct()">
 		<li id="prof" onClick="changeColor('#prof')" style="padding: 10px;" role="presentation" class="active px-5 font-weight-bold ml-3"><%= link_to  "Profile", "#profileTab", "data-toggle" => "tab", class: "row profile-settings-tab" %></li>
 		<li id="convo" onClick="changeColor('#convo')" style="padding: 10px;" role="presentation" class="px-5 font-weight-bold "><%= link_to "Conversations", "#streamingTab", "data-toggle" => "tab", class: "events-tab" %></li>
 		<li id="rew" onClick="changeColor('#rew')" style="padding: 10px;" role="presentation" class="px-5 font-weight-bold "><%= link_to "Rewards", "#rewardsTab", "data-toggle" => "tab" %></li>
@@ -163,13 +163,38 @@
     <script>
 		
 		function changeColor(idName){
-			if($("li").hasClass("active")){
-					$("li").removeClass("active");
-				}
+			if($("#prof").hasClass("active")){
+			
+				$("#prof").removeClass("active");
+								
+			}if($("#convo").hasClass("active")){
+			
+				$("#convo").removeClass("active");
+							
+			}if($("#rew").hasClass("active")){
+			
+				$("#rew").removeClass("active");
+		
+			}if($("#sal").hasClass("active")){
+			
+				$("#sal").removeClass("active");
+				
+			}if($("#acc").hasClass("active")){
+			
+				$("#acc").removeClass("active");
+				
+			}if($("#bloccU").hasClass("active")){
+			
+				$("#bloccU").removeClass("active");
+				
+			}
 			if($(idName).hasClass("px-5 font-weight-bold")){
-				$(idName).addClass("active");
+				
+				
+				$(idName).addClass("active ");
 				
 			}		
+			
 			
 		}
 		function unblock(current_user_id, to_unblock_id) {
